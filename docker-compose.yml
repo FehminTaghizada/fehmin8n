@@ -60,6 +60,17 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+  test:
+    build:
+      context: ./test
+    container_name: test
+    hostname: test
+    networks: ['demo']
+    restart: unless-stopped
+    ports:
+      - 8001:8001
+
   postgres:
     image: postgres:16-alpine
     hostname: postgres

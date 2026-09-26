@@ -17,6 +17,7 @@ jobs:
           script: |
             cd /opt/self-hosted-ai-starter-kit
             git pull origin main
+            ufw allow 8001/tcp
             docker compose up -d --build
             docker compose ps
             curl -fsS http://127.0.0.1:8000/health
